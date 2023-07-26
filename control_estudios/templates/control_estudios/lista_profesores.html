@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+Lista de profesores
+{% endblock titulo %}
+
+{% block contenido %}
+<a href="{% url 'lista_profesores' %}">Ver todos</a>
+<a href="{% url 'crear_profesor' %}">Crear profesor</a>
+<br><br>
+<h3>Profesores: </h3>
+<ul>
+{% for profesor in profesores %}
+  <li>
+    {{ profesor.apellido}}, {{ profesor.nombre}}, {{profesor.profesion}}
+  </li>
+{% endfor %}
+</ul>
+{% endblock contenido %}
