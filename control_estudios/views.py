@@ -110,7 +110,7 @@ def buscar_profesores(request):
         data = request.POST
         busqueda = data["busqueda"]
         # Filtro simple
-        profesores = Profesor.objects.filter(apellido__contains=busqueda)
+        profesores = Profesor.objects.filter(profesion__contains=busqueda)
         # Ejemplo filtro avanzado
         # cursos = Curso.objects.filter(
         #     Q(nombre=busqueda) | Q(comision__contains=busqueda)
