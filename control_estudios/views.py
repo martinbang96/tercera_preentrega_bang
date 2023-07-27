@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.db.models import Q
+
 
 from control_estudios.models import Curso, Estudiante,Profesor
 from control_estudios.forms import CursoFormulario,EstudianteFormulario,ProfesorFormulario
@@ -48,12 +48,9 @@ def buscar_estudiantes(request):
    if request.method == "POST":
         data = request.POST
         busqueda = data["busqueda"]
-        # Filtro simple
+      
         estudiantes = Estudiante.objects.filter(apellido__contains=busqueda)
-        # Ejemplo filtro avanzado
-        # cursos = Curso.objects.filter(
-        #     Q(nombre=busqueda) | Q(comision__contains=busqueda)
-        # )
+    
         contexto = {
             "estudiantes": estudiantes,
         }
@@ -109,12 +106,9 @@ def buscar_profesores(request):
    if request.method == "POST":
         data = request.POST
         busqueda = data["busqueda"]
-        # Filtro simple
+    
         profesores = Profesor.objects.filter(profesion__contains=busqueda)
-        # Ejemplo filtro avanzado
-        # cursos = Curso.objects.filter(
-        #     Q(nombre=busqueda) | Q(comision__contains=busqueda)
-        # )
+
         contexto = {
             "profesores": profesores,
         }
@@ -170,12 +164,9 @@ def buscar_cursos(request):
    if request.method == "POST":
         data = request.POST
         busqueda = data["busqueda"]
-        # Filtro simple
+     
         cursos = Curso.objects.filter(comision__contains=busqueda)
-        # Ejemplo filtro avanzado
-        # cursos = Curso.objects.filter(
-        #     Q(nombre=busqueda) | Q(comision__contains=busqueda)
-        # )
+    
         contexto = {
             "cursos": cursos,
         }
